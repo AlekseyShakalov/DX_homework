@@ -1,5 +1,5 @@
-import "./App.css";
-import ImageList from "./components/ImagesList";
+import "App.css";
+import ImageList from "components/ImagesList";
 
 function App() {
   return (
