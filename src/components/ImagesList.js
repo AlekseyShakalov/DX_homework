@@ -4,17 +4,17 @@ import axios from "helpers/axios";
 const ImageList = () => {
   const [images, setImages] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [activePage, setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`/v2/list?page=${activePage}&limit=10`).then((data) => {
+    axios.get("v2/list", { params: { page, limit: 10 } }).then((data) => {
       setImages((prevImages) => [...prevImages, ...data]);
       setLoading(false);
     });
-  }, [activePage]);
+  }, [page]);
 
-  const handleShowMore = () => setPage(activePage + 1);
+  const handleShowMore = () => setPage(page + 1);
 
   if (isLoading) {
     return <p>Loading...</p>;
